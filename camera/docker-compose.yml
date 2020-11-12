@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    camera:
+        image: ryanlaycock/camera:0.0.1
+        restart: always
+        ports:
+            - "8080:8080"
+        devices:
+            - "/dev/vchiq"
+        build:
+            context: .
+        aliases:
+          -  camera

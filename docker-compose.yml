@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+    frontend:
+        container_name: frontend
+        build:
+          context: ./frontend
+        ports:
+            - 80:80
+        depends_on:
+            - camera
+        command: nginx -g 'daemon off';
+
+    camera:
+        container_name: camera
+        hostname: camera
+        devices:
+            - "/dev/vchiq"
+        build:
+            context: ./camera
